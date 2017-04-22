@@ -1,0 +1,1075 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-minecraft-protocol/node_modules/minecraft-protocol/src/createServer.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-minecraft-protocol">npmtest-minecraft-protocol (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-minecraft-protocol/node_modules/minecraft-protocol/src/createServer.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">14.04% <small>(24 / 171)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">14.29% <small>(24 / 168)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> » <a href="index.html">node-npmtest-minecraft-protocol/node_modules/minecraft-protocol/src/</a> » createServer.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+const ursa=require("./ursa");
+const crypto = require('crypto');
+const yggserver = require('yggdrasil').server({});
+const states = require("./states");
+const bufferEqual = require('buffer-equal');
+const Server = require('./server');
+<span class="cstat-no" title="statement not covered">const UUID = require('uuid-1345');</span>
+<span class="cstat-no" title="statement not covered">const endianToggle = require('endian-toggle');</span>
+<span class="cstat-no" title="statement not covered">const pluginChannels = require('./client/pluginChannels');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">module.exports=createServer;</span>
+&nbsp;
+<span class="fstat-no" title="function not covered">function createServer(options) {</span>
+<span class="cstat-no" title="statement not covered">  options = options || {};</span>
+<span class="cstat-no" title="statement not covered">  const port = options.port != null ?</span>
+    options.port :
+    options['server-port'] != null ?
+      options['server-port'] :
+      25565;
+<span class="cstat-no" title="statement not covered">  const host = options.host || '0.0.0.0';</span>
+<span class="cstat-no" title="statement not covered">  const kickTimeout = options.kickTimeout || 30 * 1000;</span>
+<span class="cstat-no" title="statement not covered">  const checkTimeoutInterval = options.checkTimeoutInterval || 4 * 1000;</span>
+<span class="cstat-no" title="statement not covered">  const onlineMode = options['online-mode'] == null ? true : options['online-mode'];</span>
+  // a function receiving the default status object and the client
+  // and returning a modified response object.
+<span class="cstat-no" title="statement not covered">  const beforePing = options.beforePing || null;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">  const enableKeepAlive = options.keepAlive == null ? true : options.keepAlive;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">  const optVersion = options.version || require("./version").defaultVersion;</span>
+<span class="cstat-no" title="statement not covered">  const mcData=require("minecraft-data")(optVersion);</span>
+<span class="cstat-no" title="statement not covered">  const version = mcData.version;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">  const serverKey = ursa.generatePrivateKey(1024);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">  const server = new Server(version.minecraftVersion,options.customPackets);</span>
+<span class="cstat-no" title="statement not covered">  server.motd = options.motd || "A Minecraft server";</span>
+<span class="cstat-no" title="statement not covered">  server.maxPlayers = options['max-players'] || 20;</span>
+<span class="cstat-no" title="statement not covered">  server.playerCount = 0;</span>
+<span class="cstat-no" title="statement not covered">  server.onlineModeExceptions = {};</span>
+<span class="cstat-no" title="statement not covered">  server.favicon = options.favicon || undefined;</span>
+  
+<span class="cstat-no" title="statement not covered">  server.on("connection", <span class="fstat-no" title="function not covered">function(client) {</span></span>
+<span class="cstat-no" title="statement not covered">    client.once('set_protocol', onHandshake);</span>
+<span class="cstat-no" title="statement not covered">    client.once('login_start', onLogin);</span>
+<span class="cstat-no" title="statement not covered">    client.once('ping_start', onPing);</span>
+<span class="cstat-no" title="statement not covered">    client.once('legacy_server_list_ping', onLegacyPing);</span>
+<span class="cstat-no" title="statement not covered">    client.on('end', onEnd);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    let keepAlive = false;</span>
+<span class="cstat-no" title="statement not covered">    let loggedIn = false;</span>
+<span class="cstat-no" title="statement not covered">    let lastKeepAlive = null;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    let keepAliveTimer = null;</span>
+<span class="cstat-no" title="statement not covered">    let loginKickTimer = setTimeout(kickForNotLoggingIn, kickTimeout);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    let serverId;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    let sendKeepAliveTime;</span>
+&nbsp;
+<span class="fstat-no" title="function not covered">    function kickForNotLoggingIn() {</span>
+<span class="cstat-no" title="statement not covered">      client.end('LoginTimeout');</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function keepAliveLoop() {</span>
+<span class="cstat-no" title="statement not covered">      if(!keepAlive)</span>
+<span class="cstat-no" title="statement not covered">        return;</span>
+&nbsp;
+      // check if the last keepAlive was too long ago (kickTimeout)
+<span class="cstat-no" title="statement not covered">      const elapsed = new Date() - lastKeepAlive;</span>
+<span class="cstat-no" title="statement not covered">      if(elapsed &gt; kickTimeout) {</span>
+<span class="cstat-no" title="statement not covered">        client.end('KeepAliveTimeout');</span>
+<span class="cstat-no" title="statement not covered">        return;</span>
+      }
+<span class="cstat-no" title="statement not covered">      sendKeepAliveTime = new Date();</span>
+<span class="cstat-no" title="statement not covered">      client.write('keep_alive', {</span>
+        keepAliveId: Math.floor(Math.random() * 2147483648)
+      });
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function onKeepAlive() {</span>
+<span class="cstat-no" title="statement not covered">      if(sendKeepAliveTime) <span class="cstat-no" title="statement not covered">client.latency = (new Date()) - sendKeepAliveTime;</span></span>
+<span class="cstat-no" title="statement not covered">      lastKeepAlive = new Date();</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function startKeepAlive() {</span>
+<span class="cstat-no" title="statement not covered">      keepAlive = true;</span>
+<span class="cstat-no" title="statement not covered">      lastKeepAlive = new Date();</span>
+<span class="cstat-no" title="statement not covered">      keepAliveTimer = setInterval(keepAliveLoop, checkTimeoutInterval);</span>
+<span class="cstat-no" title="statement not covered">      client.on('keep_alive', onKeepAlive);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function onEnd() {</span>
+<span class="cstat-no" title="statement not covered">      clearInterval(keepAliveTimer);</span>
+<span class="cstat-no" title="statement not covered">      clearTimeout(loginKickTimer);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function onPing() {</span>
+<span class="cstat-no" title="statement not covered">      const response = {</span>
+        "version": {
+          "name": version.minecraftVersion,
+          "protocol": version.version
+        },
+        "players": {
+          "max": server.maxPlayers,
+          "online": server.playerCount,
+          "sample": []
+        },
+        "description": {"text": server.motd},
+        "favicon": server.favicon
+      };
+&nbsp;
+<span class="fstat-no" title="function not covered">      function answerToPing(err, response) {</span>
+<span class="cstat-no" title="statement not covered">        if ( err ) <span class="cstat-no" title="statement not covered">return;</span></span>
+<span class="cstat-no" title="statement not covered">        client.write('server_info', {response: JSON.stringify(response)});</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered">      if(beforePing) {</span>
+<span class="cstat-no" title="statement not covered">        if ( beforePing.length &gt; 2 ) {</span>
+<span class="cstat-no" title="statement not covered">          beforePing(response, client, answerToPing);</span>
+        } else {
+<span class="cstat-no" title="statement not covered">          answerToPing(null, beforePing(response, client) || response);</span>
+        }
+      } else {
+<span class="cstat-no" title="statement not covered">        answerToPing(null, response);</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered">      client.once('ping', <span class="fstat-no" title="function not covered">function(packet) {</span></span>
+<span class="cstat-no" title="statement not covered">        client.write('ping', {time: packet.time});</span>
+<span class="cstat-no" title="statement not covered">        client.end();</span>
+      });
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function onLegacyPing(packet) {</span>
+<span class="cstat-no" title="statement not covered">      if (packet.payload === 1) {</span>
+<span class="cstat-no" title="statement not covered">        const pingVersion = 1;</span>
+<span class="cstat-no" title="statement not covered">        sendPingResponse('\xa7' + [pingVersion, version.version, version.minecraftVersion,</span>
+            server.motd, server.playerCount.toString(), server.maxPlayers.toString()].join('\0'));
+      } else {
+        // ping type 0
+<span class="cstat-no" title="statement not covered">        sendPingResponse([server.motd, server.playerCount.toString(), server.maxPlayers.toString()].join('\xa7'));</span>
+      }
+&nbsp;
+<span class="fstat-no" title="function not covered">      function sendPingResponse(responseString) {</span>
+<span class="fstat-no" title="function not covered">        function utf16be(s) {</span>
+<span class="cstat-no" title="statement not covered">          return endianToggle(new Buffer(s, 'utf16le'), 16);</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered">        const responseBuffer = utf16be(responseString);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">        const length = responseString.length; </span>// UCS2 characters, not bytes
+<span class="cstat-no" title="statement not covered">        const lengthBuffer = new Buffer(2);</span>
+<span class="cstat-no" title="statement not covered">        lengthBuffer.writeUInt16BE(length);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">        const raw = Buffer.concat([new Buffer('ff', 'hex'), lengthBuffer, responseBuffer]);</span>
+&nbsp;
+        //client.writeRaw(raw); // not raw enough, it includes length
+<span class="cstat-no" title="statement not covered">        client.socket.write(raw);</span>
+      }
+&nbsp;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function onLogin(packet) {</span>
+<span class="cstat-no" title="statement not covered">      client.username = packet.username;</span>
+<span class="cstat-no" title="statement not covered">      const isException = !!server.onlineModeExceptions[client.username.toLowerCase()];</span>
+<span class="cstat-no" title="statement not covered">      const needToVerify = (onlineMode &amp;&amp; !isException) || (!onlineMode &amp;&amp; isException);</span>
+<span class="cstat-no" title="statement not covered">      if(needToVerify) {</span>
+<span class="cstat-no" title="statement not covered">        serverId = crypto.randomBytes(4).toString('hex');</span>
+<span class="cstat-no" title="statement not covered">        client.verifyToken = crypto.randomBytes(4);</span>
+<span class="cstat-no" title="statement not covered">        const publicKeyStrArr = serverKey.toPublicPem("utf8").split("\n");</span>
+<span class="cstat-no" title="statement not covered">        let publicKeyStr = "";</span>
+<span class="cstat-no" title="statement not covered">        for(let i = 1; i &lt; publicKeyStrArr.length - 2; i++) {</span>
+<span class="cstat-no" title="statement not covered">          publicKeyStr += publicKeyStrArr[i]</span>
+        }
+<span class="cstat-no" title="statement not covered">        client.publicKey = new Buffer(publicKeyStr, 'base64');</span>
+<span class="cstat-no" title="statement not covered">        client.once('encryption_begin', onEncryptionKeyResponse);</span>
+<span class="cstat-no" title="statement not covered">        client.write('encryption_begin', {</span>
+          serverId: serverId,
+          publicKey: client.publicKey,
+          verifyToken: client.verifyToken
+        });
+      } else {
+<span class="cstat-no" title="statement not covered">        loginClient();</span>
+      }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function onHandshake(packet) {</span>
+<span class="cstat-no" title="statement not covered">      client.serverHost = packet.serverHost;</span>
+<span class="cstat-no" title="statement not covered">      client.serverPort = packet.serverPort;</span>
+<span class="cstat-no" title="statement not covered">      client.protocolVersion = packet.protocolVersion;</span>
+<span class="cstat-no" title="statement not covered">      if(packet.nextState == 1) {</span>
+<span class="cstat-no" title="statement not covered">        client.state = states.STATUS;</span>
+      } else <span class="cstat-no" title="statement not covered">if(packet.nextState == 2) {</span>
+<span class="cstat-no" title="statement not covered">        client.state = states.LOGIN;</span>
+      }
+<span class="cstat-no" title="statement not covered">      if(client.protocolVersion!=version.version)</span>
+      {
+<span class="cstat-no" title="statement not covered">        client.end("Wrong protocol version, expected: "+version.version+" and you are using: "+client.protocolVersion);</span>
+      }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function onEncryptionKeyResponse(packet) {</span>
+<span class="cstat-no" title="statement not covered">      let sharedSecret;</span>
+<span class="cstat-no" title="statement not covered">      try {</span>
+<span class="cstat-no" title="statement not covered">        const verifyToken = serverKey.decrypt(packet.verifyToken, undefined, undefined, ursa.RSA_PKCS1_PADDING);</span>
+<span class="cstat-no" title="statement not covered">        if(!bufferEqual(client.verifyToken, verifyToken)) {</span>
+<span class="cstat-no" title="statement not covered">          client.end('DidNotEncryptVerifyTokenProperly');</span>
+<span class="cstat-no" title="statement not covered">          return;</span>
+        }
+<span class="cstat-no" title="statement not covered">        sharedSecret = serverKey.decrypt(packet.sharedSecret, undefined, undefined, ursa.RSA_PKCS1_PADDING);</span>
+      } catch(e) {
+<span class="cstat-no" title="statement not covered">        client.end('DidNotEncryptVerifyTokenProperly');</span>
+<span class="cstat-no" title="statement not covered">        return;</span>
+      }
+<span class="cstat-no" title="statement not covered">      client.setEncryption(sharedSecret);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      const isException = !!server.onlineModeExceptions[client.username.toLowerCase()];</span>
+<span class="cstat-no" title="statement not covered">      const needToVerify = (onlineMode &amp;&amp; !isException) || (!onlineMode &amp;&amp; isException);</span>
+<span class="cstat-no" title="statement not covered">      const nextStep = needToVerify ? verifyUsername : loginClient;</span>
+<span class="cstat-no" title="statement not covered">      nextStep();</span>
+&nbsp;
+<span class="fstat-no" title="function not covered">      function verifyUsername() {</span>
+<span class="cstat-no" title="statement not covered">        yggserver.hasJoined(client.username, serverId, sharedSecret, client.publicKey, <span class="fstat-no" title="function not covered">function(err, profile) {</span></span>
+<span class="cstat-no" title="statement not covered">          if(err) {</span>
+<span class="cstat-no" title="statement not covered">            client.end("Failed to verify username!");</span>
+<span class="cstat-no" title="statement not covered">            return;</span>
+          }
+          // Convert to a valid UUID until the session server updates and does
+          // it automatically
+<span class="cstat-no" title="statement not covered">          client.uuid = profile.id.replace(/(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})/, "$1-$2-$3-$4-$5");</span>
+<span class="cstat-no" title="statement not covered">          client.profile = profile;</span>
+<span class="cstat-no" title="statement not covered">          loginClient();</span>
+        });
+      }
+    }
+&nbsp;
+&nbsp;
+    // https://github.com/openjdk-mirror/jdk7u-jdk/blob/f4d80957e89a19a29bb9f9807d2a28351ed7f7df/src/share/classes/java/util/UUID.java#L163
+<span class="fstat-no" title="function not covered">    function javaUUID(s)</span>
+    {
+<span class="cstat-no" title="statement not covered">      const hash = crypto.createHash("md5");</span>
+<span class="cstat-no" title="statement not covered">      hash.update(s, 'utf8');</span>
+<span class="cstat-no" title="statement not covered">      const buffer = hash.digest();</span>
+<span class="cstat-no" title="statement not covered">      buffer[6] = (buffer[6] &amp; 0x0f) | 0x30;</span>
+<span class="cstat-no" title="statement not covered">      buffer[8] = (buffer[8] &amp; 0x3f) | 0x80;</span>
+<span class="cstat-no" title="statement not covered">      return buffer;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function nameToMcOfflineUUID(name)</span>
+    {
+<span class="cstat-no" title="statement not covered">      return (new UUID(javaUUID("OfflinePlayer:"+name))).toString();</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function loginClient() {</span>
+<span class="cstat-no" title="statement not covered">      const isException = !!server.onlineModeExceptions[client.username.toLowerCase()];</span>
+<span class="cstat-no" title="statement not covered">      if(onlineMode == false || isException) {</span>
+<span class="cstat-no" title="statement not covered">        client.uuid = nameToMcOfflineUUID(client.username);</span>
+      }
+<span class="cstat-no" title="statement not covered">      if (version.version &gt;= 27) { // 14w28a (27) added whole-protocol compression (http://wiki.vg/Protocol_History#14w28a), earlier versions per-packet compressed TODO: refactor into minecraft-data</span>
+<span class="cstat-no" title="statement not covered">        client.write('compress', { threshold: 256 }); </span>// Default threshold is 256
+<span class="cstat-no" title="statement not covered">        client.compressionThreshold = 256;</span>
+      }
+<span class="cstat-no" title="statement not covered">      client.write('success', {uuid: client.uuid, username: client.username});</span>
+<span class="cstat-no" title="statement not covered">      client.state = states.PLAY;</span>
+<span class="cstat-no" title="statement not covered">      loggedIn = true;</span>
+<span class="cstat-no" title="statement not covered">      if(enableKeepAlive) <span class="cstat-no" title="statement not covered">startKeepAlive();</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      clearTimeout(loginKickTimer);</span>
+<span class="cstat-no" title="statement not covered">      loginKickTimer = null;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      server.playerCount += 1;</span>
+<span class="cstat-no" title="statement not covered">      client.once('end', <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">        server.playerCount -= 1;</span>
+      });
+<span class="cstat-no" title="statement not covered">      pluginChannels(client, options);</span>
+<span class="cstat-no" title="statement not covered">      server.emit('login', client);</span>
+    }
+  });
+<span class="cstat-no" title="statement not covered">  server.listen(port, host);</span>
+<span class="cstat-no" title="statement not covered">  return server;</span>
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sat Apr 22 2017 01:55:49 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>
