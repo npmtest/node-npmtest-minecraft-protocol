@@ -13,7 +13,7 @@
 <tspan x="10" y="170">  ├── lodash.merge@4.6.0 </tspan>
 <tspan x="10" y="186">  ├── minecraft-data@2.14.0 </tspan>
 <tspan x="10" y="202">  ├── prismarine-nbt@1.1.0 </tspan>
-<tspan x="10" y="218">  ├─┬ protodef@1.4.0 </tspan>
+<tspan x="10" y="218">  ├─┬ protodef@1.5.1 </tspan>
 <tspan x="10" y="234">  │ ├── lodash.reduce@4.6.0 </tspan>
 <tspan x="10" y="250">  │ └─┬ protodef-validator@1.1.7 </tspan>
 <tspan x="10" y="266">  │   └─┬ ajv@4.11.7 </tspan>
